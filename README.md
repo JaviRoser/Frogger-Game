@@ -10,7 +10,7 @@ In this game, we have a player and several enemies (bugs). The player must reach
 ## Game Instructions
 
 * Test the game: https://javiroser.github.io/Frogge-Game/
-* The game has one player, and several enemies
+* The game has one player, and several enemies (:beetle::beetle:)
 * To start playing, use the keyboard arrows to move the player right, left, up and down
 * Avoid any enemy and reach the water to win the game.
 
