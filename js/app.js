@@ -1,117 +1,103 @@
 "use strict";
 // Main class
-// class GameCharacters{
-//   constructor(x,y,speed);
-// }
+class GameCharacters {
+	constructor(x, y, speed) {
+		this.x = x;
+		this.y = y;
+		this.speed = speed;
+	}
+	// Draw the enemy on the screen, required method for game
+	render() {
+		ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+	}
+}
 
 // Enemies our player must avoid
-let Enemy = function (x, y, speed) {
-	// Variables applied to each of our instances go here,
-	// we've provided one for you to get started
-	// The image/sprite for our enemies, this uses
-	// a helper we've provided to easily load images
-
-	this.x = x;
-	this.y = y;
-	this.speed = speed;
-	this.sprite = 'images/enemy-bug.png';
-
-};
-
-
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function (dt) {
+class Enemy extends GameCharacters {
+	constructor(x, y, speed) {
+		super(x, y, speed);
+		this.sprite = 'images/enemy-bug.png';
+	}
+	// Update the enemy's position, required method for game
+	// Parameter: dt, a time delta between ticks
+	// Enemy.prototype.update = function (dt) {
 	// You should multiply any movement by the dt parameter
 	// which will ensure the game runs at the same speed for
 	// all computers.
-	this.x += this.speed * dt;
-	if (this.x >= 500) {
-		this.x = 0;
+	update(dt) {
+		this.x += this.speed * dt;
+		if (this.x >= 500) {
+			this.x = 0;
+		}
 	}
-};
-// Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function () {
-	ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-
+}
 
 // Now write your own player class
 // This class requires an update(), render() and
 // a HandleInput() method.
-let Player = function (x, y) {
-	this.sprite = 'images/char-boy.png';
-	this.x = x;
-	this.y = y;
-};
-// Player (update(), render(),&& HandleInput()method)
-Player.prototype.update = function (dt) {
+
+class Player extends GameCharacters {
+	constructor(x, y) {
+		super(x, y);
+		this.sprite = 'images/char-boy.png';
+	}
+
 	// You should multiply any movement by the dt parameter
 	// which will ensure the game runs at the same speed for
 	// all computers.
-};
-// Draw the player on the screen, required method for game
-Player.prototype.render = function () {
-	ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
+
+	// update(dt){}
+	//Position the player (x,y coordinates)
+	handleInput(keypress) {
+		switch (keypress) {
+			case 'up':
+				this.y > 0 && (this.y -= 83);
+				break;
+			case 'down':
+				this.y < 400 && (this.y += 83);
+				break;
+			case 'left':
+				this.x > 0 && (this.x -= 101);
+				break;
+			case 'right':
+				this.x < 400 && (this.x += 101);
+				break;
+		}
+	}
+	checkCollisions() {
+		if (this.y == -15) {
+			console.log('you win');
+
+		}
+
+		if () {
+			//return Player to initial coordinates
+			this.x = 200;
+			this.y = 400;
+
+			console.log('Collision');
+		}
+	}
+}
+
+}
+// Place the player object in a variable called player
+let player = new Player(200, 400);
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // let allEnemies = [];
 
-
 let allEnemies = [];
-
-// for (let i = 0; i <= 1; i++) {
+// let level=1;
+// for (let i = 0; i < level; i++) {
 for (let enemyRowPosition = 68; enemyRowPosition <= 232; enemyRowPosition += 82) {
-
 	// let enemy = new Enemy(0, (Math.random() * 184) + 50, Math.random() * 456);
-	let enemy = new Enemy(0, enemyRowPosition, (Math.random() * 250) + 50);
-
+	let enemy = new Enemy(0, enemyRowPosition, (Math.random() * 140) + 30);
 	allEnemies.push(enemy);
 }
 
 // }
-
-
-// Place the player object in a variable called player
-
-
-let player = new Player(200, 400); //Position the player (x,y coordinates)
-Player.prototype.handleInput = function (keypress) {
-	switch (keypress) {
-		case 'up':
-			this.y > 0 && (this.y -= 83);
-			if (this.y == -15) {
-				console.log('you win');
-
-			} else {
-				checkCollisions();
-
-			}
-			break;
-		case 'down':
-			this.y < 400 && (this.y += 83);
-			break;
-		case 'left':
-			this.x > 0 && (this.x -= 101);
-			break;
-		case 'right':
-			this.x < 400 && (this.x += 101);
-			break;
-	}
-	console.log(keypress);
-}
-
-//checkCollisions
-function checkCollisions() {
-	if (player.x === allEnemies[2].y) {
-
-
-		console.log('Collision');
-	}
-
-}
-
 
 // This listens for key presses and sends the keys to your
 // Player.HandleInput() method. You don't need to modify this.
