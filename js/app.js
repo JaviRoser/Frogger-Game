@@ -64,23 +64,23 @@ class Player extends GameCharacters {
 				break;
 		}
 	}
-	checkCollisions() {
-		if (this.y == -15) {
-			console.log('you win');
-
-		}
-
-		if () {
-			//return Player to initial coordinates
-			this.x = 200;
-			this.y = 400;
-
-			console.log('Collision');
-		}
-	}
+	// checkCollisions() {
+	// 	if (this.y == -15) {
+	// 		console.log('you win');
+  //
+	// 	}
+  //
+	// 	if () {
+	// 		//return Player to initial coordinates
+	// 		this.x = 200;
+	// 		this.y = 400;
+  //
+	// 		console.log('Collision');
+	// 	}
+	// }
 }
 
-}
+
 // Place the player object in a variable called player
 let player = new Player(200, 400);
 
