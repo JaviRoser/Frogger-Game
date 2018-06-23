@@ -1,3 +1,151 @@
-body {
-    text-align: center;
+html {
+	text-align: center;
+	background-color: #f6f6f6;
+	margin: 0;
+	padding: 0;
+}
+
+
+/*instructions*/
+
+.instructions {
+	font-family: 'Anton', sans-serif;
+	padding: 0;
+	margin: 0;
+}
+
+.instructions li {
+	font-size: 0.9em !important;
+	color: #404b69;
+}
+
+ul {
+	list-style-type: none;
+}
+
+
+/*Instructions accordion Courtesy W3School*/
+
+
+/* Style the buttons that are used to open and close the accordion panel */
+
+.accordion {
+	cursor: pointer;
+	padding: 10px;
+	width: 60%;
+	border: none;
+	outline: none;
+	transition: 1s;
+	font-size: 2em !important;
+	letter-spacing: 0.3em;
+	text-align: center;
+	font-weight: 700;
+	background-color: #f6f6f6;
+	font-family: 'Anton', sans-serif;
+	color: #61c0bf;
+}
+
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+
+.active,
+.accordion:hover {
+	background-color: #bbded6;
+	color: white;
+}
+
+
+/* Style the accordion panel. Note: hidden by default */
+
+.panel {
+	padding: 0 18px;
+	display: none;
+	overflow: hidden;
+}
+
+
+/*
+ Congratulations Popup
+ */
+
+
+/* The Modal (background) */
+
+.modal {
+	display: none;
+	/* Hidden by default */
+	position: fixed;
+	/* Stay in place */
+	z-index: 1;
+	/* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%;
+	/* Full width */
+	height: 100%;
+	/* Full height */
+	overflow: auto;
+	/* Enable scroll if needed */
+	background-color: rgb(0, 0, 0);
+	/* Fallback color */
+	background-color: #61c0bf;
+	opacity: 1;
+	/* Black w/ opacity */
+}
+
+
+/* Modal Content/Box */
+
+.modal-content {
+	margin: 15% auto;
+	/* 15% from the top and centered */
+	padding: 20px;
+	width: 80%;
+	font-size: 3em;
+	letter-spacing: 0.5em;
+	color: #f9ed69;
+	font-family: 'Luckiest Guy', cursive;
+	/* Could be more or less, depending on screen size */
+}
+
+
+/* Add Animation */
+
+@-webkit-keyframes animatetop {
+	from {
+		top: -200px;
+		/* opacity: 1 */
+	}
+	to {
+		top: 0;
+		/* opacity: 1 */
+	}
+}
+
+@keyframes animatetop {
+	from {
+		top: -200px;
+		/* opacity: 0 */
+	}
+	to {
+		top: 0;
+		/* opacity: 1 */
+	}
+}
+
+
+/* Modal Close Button */
+
+.close {
+	color: #fc5185;
+	float: right;
+	font-size: 5em;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
 }

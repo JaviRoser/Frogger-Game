@@ -1,4 +1,9 @@
 "use strict";
+
+//modal
+let modal = document.getElementById("congratulations");
+
+
 // Main class
 class GameCharacters {
 	constructor(x, y, speed) {
@@ -30,21 +35,15 @@ class Enemy extends GameCharacters {
 			this.x = 0;
 		}
 		// checkCollisions
-		if (player.x < this.x + 80 &&	player.x + 80 > this.x &&
-				player.y < this.y + 60 &&	player.y + 60 > this.y) {
+		if (player.x < this.x + 80 && player.x + 80 > this.x &&
+			player.y < this.y + 60 && player.y + 60 > this.y) {
 			//return Player to initial coordinates
-			// setTimeout(()=>{
-			//
-			//
-			// });
-			player.x = 200;
-			player.y = 400;
-			// console.log(`${}+${}`);
-			console.log('Collision');
+			playerReset();
 
 		}
 	}
 }
+
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -61,14 +60,37 @@ class Player extends GameCharacters {
 	// all computers.
 
 	// update(dt){}
+
 	//Position the player (x,y coordinates)
 	handleInput(keypress) {
 		switch (keypress) {
 			case 'up':
 				this.y > 0 && (this.y -= 83);
+				//Check if Player reach the water
 				if (player.y == -15) {
-					console.log('you win');
+					setTimeout(() => {
+						let span = document.getElementsByClassName("close")[0];
+						modal.style.display = "block";
+						// When the user clicks on <span> (x), close the modal
+						span.onclick = function () {
+							modal.style.display = "none";
+						};
+
+						// When the user clicks anywhere outside of the modal, close it
+						window.onclick = function (event) {
+							if (event.target == modal) {
+								modal.style.display = "none";
+
+							}
+						};
+
+						playerReset()
+						// init();
+					}, 400);
+
+
 				}
+				console.log(`up:${this.y}`);
 				break;
 			case 'down':
 				this.y < 400 && (this.y += 83);
@@ -84,6 +106,14 @@ class Player extends GameCharacters {
 
 }
 
+function playerReset() {
+
+	player.x = 200;
+	player.y = 400;
+
+
+}
+
 
 // Place the player object in a variable called player
 let player = new Player(200, 400);
@@ -93,18 +123,13 @@ let player = new Player(200, 400);
 // let allEnemies = [];
 
 let allEnemies = [];
-// let level=1;
-// for (let i = 0; i < numOfEnemies; i++) {
 for (let enemyRowPosition = 68; enemyRowPosition <= 232; enemyRowPosition += 82) {
 	// let enemy = new Enemy(0, (Math.random() * 184) + 50, Math.random() * 456);
 	// let enemy = new Enemy(0, 68+(82*i), (Math.random() * 140) + 30);
-	let enemy = new Enemy(-100, enemyRowPosition, (Math.random() * 140) + 30);
+	let enemy = new Enemy(-100, enemyRowPosition, (Math.random() * 240) + 30);
 	allEnemies.push(enemy);
-	// for (let i=0 ; i<=2 ; i++){
-	// 	console.log(` x:${allEnemies[i].x} y:${allEnemies[i].y} `);
-	// }
 }
-// }
+
 
 // This listens for key presses and sends the keys to your
 // Player.HandleInput() method. You don't need to modify this.
@@ -117,3 +142,45 @@ document.addEventListener('keyup', function (e) {
 	};
 	player.handleInput(allowedKeys[e.keyCode]);
 });
+
+//Game UI
+
+let acc = document.getElementsByClassName("accordion");
+let rmAcc = document.querySelector(".accordion");
+
+
+for (let i = 0; i < acc.length; i++) {
+	acc[i].addEventListener("mouseover", function () {
+		/* Toggle between adding and removing the "active" class,
+		to highlight the button that controls the panel */
+		// this.classList.toggle("active");
+
+		/* Toggle between hiding and showing the active panel */
+		let panel = this.nextElementSibling;
+		if (panel.style.display === "block") {
+			panel.style.display = "none";
+		} else {
+			panel.style.display = "block";
+		}
+	});
+	//Make the menu dissapear
+	acc[i].addEventListener("mouseleave", function () {
+		/* Toggle between adding and removing the "active" class,
+		to highlight the button that controls the panel */
+		// this.classList.toggle("active");
+
+		/* Toggle between hiding and showing the active panel */
+		setTimeout(() => {
+			let panel = this.nextElementSibling;
+			if (panel.style.display === "block") {
+				panel.style.display = "none";
+				rmAcc.remove();
+			} else {
+				panel.style.display = "block";
+
+			}
+
+		}, 1000);
+	});
+
+}

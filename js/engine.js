@@ -163,7 +163,15 @@ let Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        // noop
+      // for (let enemyRowPosition = 68; enemyRowPosition <= 232; enemyRowPosition += 82) {
+      //   // let enemy = new Enemy(0, (Math.random() * 184) + 50, Math.random() * 456);
+      //   // let enemy = new Enemy(0, 68+(82*i), (Math.random() * 140) + 30);
+      //   let enemy = new Enemy(-100, enemyRowPosition, (Math.random() * 240) + 30);
+      //   allEnemies.push(enemy);
+      //   // for (let i=0 ; i<=2 ; i++){
+      //   // 	console.log(` x:${allEnemies[i].x} y:${allEnemies[i].y} `);
+      //   // }
+      // }
     }
 
     /* Go ahead and load all of the images we know we're going to need to
