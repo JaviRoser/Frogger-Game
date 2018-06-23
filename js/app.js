@@ -29,6 +29,20 @@ class Enemy extends GameCharacters {
 		if (this.x >= 500) {
 			this.x = 0;
 		}
+		// checkCollisions
+		if (player.x < this.x + 80 &&	player.x + 80 > this.x &&
+				player.y < this.y + 60 &&	player.y + 60 > this.y) {
+			//return Player to initial coordinates
+			// setTimeout(()=>{
+			//
+			//
+			// });
+			player.x = 200;
+			player.y = 400;
+			// console.log(`${}+${}`);
+			console.log('Collision');
+
+		}
 	}
 }
 
@@ -52,6 +66,9 @@ class Player extends GameCharacters {
 		switch (keypress) {
 			case 'up':
 				this.y > 0 && (this.y -= 83);
+				if (player.y == -15) {
+					console.log('you win');
+				}
 				break;
 			case 'down':
 				this.y < 400 && (this.y += 83);
@@ -64,20 +81,7 @@ class Player extends GameCharacters {
 				break;
 		}
 	}
-	// checkCollisions() {
-	// 	if (this.y == -15) {
-	// 		console.log('you win');
-  //
-	// 	}
-  //
-	// 	if () {
-	// 		//return Player to initial coordinates
-	// 		this.x = 200;
-	// 		this.y = 400;
-  //
-	// 		console.log('Collision');
-	// 	}
-	// }
+
 }
 
 
@@ -90,13 +94,16 @@ let player = new Player(200, 400);
 
 let allEnemies = [];
 // let level=1;
-// for (let i = 0; i < level; i++) {
+// for (let i = 0; i < numOfEnemies; i++) {
 for (let enemyRowPosition = 68; enemyRowPosition <= 232; enemyRowPosition += 82) {
 	// let enemy = new Enemy(0, (Math.random() * 184) + 50, Math.random() * 456);
-	let enemy = new Enemy(0, enemyRowPosition, (Math.random() * 140) + 30);
+	// let enemy = new Enemy(0, 68+(82*i), (Math.random() * 140) + 30);
+	let enemy = new Enemy(-100, enemyRowPosition, (Math.random() * 140) + 30);
 	allEnemies.push(enemy);
+	// for (let i=0 ; i<=2 ; i++){
+	// 	console.log(` x:${allEnemies[i].x} y:${allEnemies[i].y} `);
+	// }
 }
-
 // }
 
 // This listens for key presses and sends the keys to your
