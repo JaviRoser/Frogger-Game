@@ -97,7 +97,7 @@ class Player extends GameCharacters {
                      player.x = -300;
                      player.y = -300;
                   }
-               }, 2000);
+               }, 400);
             }
             console.log(`up: ${this.y}`)
             break;
