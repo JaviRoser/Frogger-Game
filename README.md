@@ -19,8 +19,7 @@ In this game, we have a player and several enemies (bugs). The player must reach
 
 ## External Libraries and Toolkit
 * Google Fonts 
-* Font Awesome
-* Bootstrap
+
 
 ## Future Functionality
 
