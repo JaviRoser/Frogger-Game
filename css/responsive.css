@@ -1,0 +1,12 @@
+@media screen and (max-width: 1024px) {
+
+  #instructions li {
+     font-size: 1.2em !important;
+     padding: 0.5em 4em 0.2em 9em;
+  }
+  .closeInstructions {
+     font-size:5em;
+
+  }
+
+}

@@ -1,11 +1,24 @@
 "use strict";
+/**/
 let modal = document.getElementById("congratulations");
 let gameInstructions = document.getElementById("instructions");
 let playerMsg = document.getElementById('msgContent');
+let playerSound
+/*Initialize the game*/
 startGame();
 
 function startGame() {
    showInstructions();
+   playerSound = new sound("sounds/ouch.mp3");
+}
+/*Courtesy of W3School*/
+function sound(src) {
+   this.sound = document.createElement("audio");
+   this.sound.src = src;
+   document.body.appendChild(this.sound);
+   this.play = function() {
+      this.sound.play();
+   }
 }
 /*Player instructions*/
 function showInstructions() {
@@ -20,10 +33,9 @@ function showInstructions() {
             player.y = 400;
          }
       };
-      // instructionIsClosed
    }, 100);
 }
-// Main class
+/*Main class*/
 class GameCharacters {
    constructor(x, y, speed) {
       this.x = x;
@@ -55,6 +67,7 @@ class Enemy extends GameCharacters {
       // checkCollisions
       if (player.x < this.x + 80 && player.x + 80 > this.x && player.y < this.y + 60 && player.y + 60 > this.y) {
          playerMsg.innerText = "Ouch......";
+         playerSound.play();
          //Message dissapear
          setTimeout(() => {
             playerMsg.innerText = "";
@@ -76,7 +89,6 @@ class Player extends GameCharacters {
    // which will ensure the game runs at the same speed for
    // all computers.
    // update(dt){}
-   //Position the player (x,y coordinates)
    handleInput(keypress) {
       switch (keypress) {
          case 'up':
@@ -94,6 +106,7 @@ class Player extends GameCharacters {
                      }
                   };
                   if (modal.style.display == "block") {
+                     //Position the player outside the canvas (x,y coordinates)
                      player.x = -300;
                      player.y = -300;
                   }
@@ -113,7 +126,7 @@ class Player extends GameCharacters {
       }
    }
 }
-//return Player to initial coordinates
+/* Return Player to initial coordinates*/
 function playerReset() {
    player.x = 200;
    player.y = 400;
@@ -122,7 +135,6 @@ function playerReset() {
 let player = new Player(-100, -100);
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-// let allEnemies = [];
 let allEnemies = [];
 for (let enemyRowPosition = 68; enemyRowPosition <= 232; enemyRowPosition += 82) {
    // let enemy = new Enemy(0, (Math.random() * 184) + 50, Math.random() * 456);
@@ -141,4 +153,3 @@ document.addEventListener('keyup', function(e) {
    };
    player.handleInput(allowedKeys[e.keyCode]);
 });
-//Game UI (Instructions)

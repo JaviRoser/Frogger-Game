@@ -3,35 +3,45 @@
 <head>
    <meta charset="UTF-8">
    <title>Frogger Game</title>
-   <link href="css/style.css" rel="stylesheet"><!--Animate CSS-->
+   <link href="css/style.css" rel="stylesheet">
+   <link href="css/responsive.css" rel="stylesheet">
    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Anton|Luckiest+Guy" rel="stylesheet">
+
 </head>
 <body>
+  <!--Game Instructions-->
+  <div class="modal" id="instructions">
+
+
+     <span class="closeInstructions">&times;</span>
+
+
+            <ul>
+        <li style="list-style: none; display: inline">
+           <h1>Arcade Game</h1>
+        </li>
+        <li>Move the character with keyboard keys</li>
+        <li>Avoid Enemies</li>
+        <li>Reach the water by just moving up</li>
+        <li>If both collides, player returns to initial position</li>
+
+     </ul>
+
+
+  </div>
+  <!--A message appears when player reach the water-->
    <div class="modal" id="congratulations">
       <!-- Modal content -->
       <div class="modal-content">
          <span class="close">&times;</span>
          <h1 class="message">You Made it</h1>
       </div>
-   </div><!--Game Instructions-->
-   <div class="modal" id="instructions">
-      <span class="closeInstructions">&times;</span>
-      <ul>
-         <li style="list-style: none; display: inline">
-            <h1>Instructions</h1>
-         </li>
-         <li>Move the character with keyboard keys</li>
-         <li>Avoid Enemies</li>
-         <li>Reach the water by just moving up</li>
-         <li>if a bug touches, player returns to initial location</li>
-      </ul>
    </div>
    <div class="playerMsg">
       <span class="playerMsgContent" id="msgContent"></span>
-   </div><!-- <div class="gameStats">
-         <h4>Lives:</h4>
-         </div> -->
+   </div>
+
    <script src="js/resources.js">
    </script>
    <script src="js/app.js">

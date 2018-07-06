@@ -1,6 +1,6 @@
 html {
    text-align: center;
-   background-color: #f3e8cb;
+   background-color: #eae3e3;
    margin: 0;
    padding: 0;
 }
@@ -18,9 +18,9 @@ html {
    padding: 0.5em 0 0.5em 16em;
 }
 #instructions h1 {
-   font-size: 3em !important;
+   font-size: 2em !important;
    color: #404b69;
-   padding-left: 4em;
+   padding-left: 8em;
 }
 ul {
    list-style-type: none;
@@ -37,7 +37,7 @@ Player
 */
 
 .playerMsgContent {
-   font-size: 2em;
+   font-size: 6em;
    font-weight: 700;
    color: #860f44;
    /* Position the message */
@@ -111,14 +111,14 @@ Player
 .close {
    color: #fc5185;
    float: right;
-   font-size: 2em;
+   font-size: 4em;
    font-weight: bold;
 }
 .closeInstructions {
    color: #fc5185;
-   font-size: 6em;
+   font-size: 9em;
    float: right;
-   padding-right: 4em;
+   padding-right: 2em;
    margin: 0;
 }
 .close:hover, .closeInstructions:hover, .close:focus, .closeInstructions:focus {
