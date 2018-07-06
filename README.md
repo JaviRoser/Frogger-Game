@@ -16,6 +16,8 @@ In this game, we have a player and several enemies (bugs). The player must reach
 
 
 ## Game Layout
+![game](https://user-images.githubusercontent.com/25829140/42403961-3abb008c-8153-11e8-8858-6739a17f059b.JPG)
+
 
 ## External Libraries and Toolkit
 * Google Fonts 
