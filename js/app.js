@@ -112,7 +112,7 @@ class Player extends GameCharacters {
                   }
                }, 400);
             }
-            console.log(`up: ${this.y}`)
+    
             break;
          case 'down':
             this.y < 400 && (this.y += 83);

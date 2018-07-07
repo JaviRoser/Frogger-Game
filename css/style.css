@@ -18,9 +18,9 @@ html {
    padding: 0.5em 0 0.5em 16em;
 }
 #instructions h1 {
-   font-size: 2em !important;
+   font-size: 1.5em !important;
    color: #404b69;
-   padding-left: 8em;
+   text-align: center;
 }
 ul {
    list-style-type: none;
