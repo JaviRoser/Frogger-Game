@@ -1,9 +1,9 @@
 "use strict";
 /**/
-let modal = document.getElementById("congratulations");
-let gameInstructions = document.getElementById("instructions");
-let playerMsg = document.getElementById('msgContent');
-let playerSound
+let gameInstructions = document.getElementById("instructions"),
+    playerMsg = document.getElementById('msgContent'), //Show a message when the player collides with enemy
+    modal = document.getElementById("congratulations"),//Show a message when player reaches the water
+    playerSound;
 /*Initialize the game*/
 startGame();
 
@@ -11,16 +11,16 @@ function startGame() {
    showInstructions();
    playerSound = new sound("sounds/ouch.mp3");
 }
-/*Courtesy of W3School*/
+/*Courtesy of W3School:https://www.w3schools.com/graphics/game_sound.asp*/
 function sound(src) {
    this.sound = document.createElement("audio");
    this.sound.src = src;
    document.body.appendChild(this.sound);
-   this.play = function() {
+   this.play = (() => {
       this.sound.play();
-   }
+   })
 }
-/*Player instructions*/
+/*Game instructions*/
 function showInstructions() {
    setTimeout(() => {
       let spanInstructions = document.getElementsByClassName("closeInstructions")[0];
@@ -47,7 +47,7 @@ class GameCharacters {
       ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
    }
 }
-// Enemies our player must avoid
+/*Enemy Class:Enemies our player must avoid*/
 class Enemy extends GameCharacters {
    constructor(x, y, speed) {
       super(x, y, speed);
@@ -64,7 +64,7 @@ class Enemy extends GameCharacters {
       if (this.x >= 500) {
          this.x = 0;
       }
-      // checkCollisions
+      // Check collisions
       if (player.x < this.x + 80 && player.x + 80 > this.x && player.y < this.y + 60 && player.y + 60 > this.y) {
          playerMsg.innerText = "Ouch......";
          playerSound.play();
@@ -83,7 +83,6 @@ class Player extends GameCharacters {
    constructor(x, y) {
       super(x, y);
       this.sprite = 'images/char-boy.png';
-      // this.message="I am ready";
    }
    // You should multiply any movement by the dt parameter
    // which will ensure the game runs at the same speed for
@@ -93,7 +92,7 @@ class Player extends GameCharacters {
       switch (keypress) {
          case 'up':
             this.y > 0 && (this.y -= 83);
-            //Check if Player reach the water
+            //Check if Player reach the water && shows pop=up screen
             if (player.y == -15) {
                setTimeout(() => {
                   let span = document.getElementsByClassName("close")[0];
@@ -112,7 +111,6 @@ class Player extends GameCharacters {
                   }
                }, 400);
             }
-    
             break;
          case 'down':
             this.y < 400 && (this.y += 83);
