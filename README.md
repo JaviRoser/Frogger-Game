@@ -1,4 +1,4 @@
-# Frogger Game Project
+# Udacity Project #3: Frogger Game Project
 
 Udacity's Classic Arcade Game
 
